@@ -1,0 +1,18 @@
+.fondo{
+    
+   
+   
+}
+.padre{
+    display: flex;
+    justify-content: center;
+}
+.imge{
+    border-radius: 15px;
+}
+
+.infoColum{
+    
+    width: 80%;
+    margin: 80px;
+}

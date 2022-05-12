@@ -1,0 +1,30 @@
+
+.elemento{
+    color: rgb(8, 8, 8);
+    padding: auto;
+    font-size: 10px;
+}
+
+.btn1{
+ 
+}
+
+.btndelete{
+
+    background-color: red;
+    
+}
+
+.lista{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedor{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
