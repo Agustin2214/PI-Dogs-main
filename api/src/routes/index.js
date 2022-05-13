@@ -140,7 +140,7 @@ router.get('/dog', async (req, res) => {
         "bred_for": 'NO ENCONTRADO',
         "id": 'NO ENCONTRADO'}])
 
-    } else {
+    } else  {
 
         res.status(200).send(razasTotales)
     }
@@ -234,8 +234,24 @@ res.send('dog created')
  
  
 
+router.delete('/:name/', async (req, res)=>{
+    
+   try{ 
+    let {name}=req.params
+    let {height,temperaments}=req.body
+     await Dog.update(
+         {name,height,temperaments},
+         {
+        where:{
+            id: id
+        }
+    })
+    res.status(200).send("usuario eliminado")
+}catch(error) {
+    res.status(400).send("usuario no se pudo eliminar");
 
-
+}
+})
 
 
 

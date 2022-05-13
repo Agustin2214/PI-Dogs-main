@@ -1,8 +1,13 @@
 import style from './Paginado.module.css'
 
 
-export function Paginado ({dogPorPagina,allDog,paginado,paginaActual, setpaginaActual}){
+export function Paginado ({dogPorPagina,allDog,paginado}){
+    
+
+    
     const pageNumbers = []
+
+
 
     for ( let i=1; i <=Math.ceil(allDog/dogPorPagina); i++){
         pageNumbers.push(i)
@@ -10,6 +15,7 @@ export function Paginado ({dogPorPagina,allDog,paginado,paginaActual, setpaginaA
 
     return(
         <nav className={style.navPag}>
+            
 <ul className={style.pag}>
 
     {pageNumbers && pageNumbers.map(number=>(

@@ -102,16 +102,7 @@ export function detellesDog(id){
 }
   
 
-// export function filtroTemp(temperamentos){
-//   return async function(dispatch){
-//     console.log(temperamentos)
-//       var json = await axios.get("http://localhost:3001/temperaments",temperamentos);
-//       return dispatch({
-//         type: FILTRO_TEMP,
-//         payload: temperamentos
-//       })
-//     }
-// }
+
 
 export function filtroTemperament(temperamentos){
   return async function(dispatch){

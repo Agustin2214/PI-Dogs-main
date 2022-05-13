@@ -1,9 +1,9 @@
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {getName} from '../action/index'
+ import {getName} from '../action/index'
 
 
-export function SubNav(){
+export function SubNav({setpaginaActual}){
     const dispatch = useDispatch();
     const [nombres, setNombres] = useState("");
     
@@ -21,7 +21,7 @@ export function SubNav(){
         e.preventDefault()
         if(nombres.length>0){
       dispatch(getName(nombres))
-    
+      setpaginaActual(1)
         setNombres('');
         e.target.reset()}
         else{

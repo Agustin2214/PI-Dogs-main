@@ -113,16 +113,30 @@ if(!inputs.name){
     errors.name = 'Nombre de raza requerido'
 }
 if(parseInt(inputs.height_max) < parseInt(inputs.height_min)){
-    errors.height_max = 'height max debe ser mayor al minimo'
+    errors.height_max = 'Altura max debe ser mayor al minimo.'
+}
+if(parseInt(inputs.height_max) < 0  || parseInt(inputs.height_max) > 150){
+    errors.height_min = 'La altura debe ser entre 1 y 150cm'
+}
+if(parseInt(inputs.height_min) < 0  || parseInt(inputs.height_min) > 150){
+    errors.height_min = 'La altura debe ser entre 1 y 150cm'
 }
 
 if(parseInt(inputs.weight_max) < parseInt(inputs.weight_min)){
-    errors.weight_max = 'Weight max debe ser mayor al minimo'
+    errors.weight_max = ' Peso Maximo debe ser mayor al minimo.'
+}
+if(parseInt(inputs.weight_max) < 0  || parseInt(inputs.weight_max) > 200){
+    errors.weight_min = 'El peso debe ser entre 1 y 200'
+}
+if(parseInt(inputs.weight_min) < 0  || parseInt(inputs.weight_min) > 200){
+    errors.weight_min = 'El peso debe ser entre 1 y 200'
 }
 
-if(inputs.temperament.length == 0 ){
+
+if(inputs.temperament.length === 0 ){
     errors.temperament = 'Debe ingresar al menos un temperamento'
 } 
+
 
 
 
@@ -136,66 +150,73 @@ useEffect(()=>{
 
 return(
     
-    <div className={style.padre}>
+    <div className={style.fondo}>
         <NavBar/>
-<Link to = '/home'><button>Volver</button></Link>
+        <div className={style.row}>
+ <div className={style.form1}>   
+
 <h1>Crea Tu Propia Raza</h1>
-<form onSubmit={(e)=>handleSumbit(e)}  >
+<form className={style.padre} onSubmit={(e)=>handleSumbit(e)}  >
+<div >
+    <label className={style.label}>Nombre:</label>
+    <input className={style.inputsname} maxlength="30" autocomplete= "off" placeholder ="Ingrese nombre de raza"  required  onChange={handleChange} type="text" value={inputs.name} name = "name" />
+    <p className={style.error}>{errors.name}</p>
+</div> 
 <div>
-    <label>Nombre:</label>
-    <input maxlength="30" autocomplete= "off" placeholder ="Ingrese x" className={errors.name && style.danger} required  onChange={handleChange} type="text" value={inputs.name} name = "name" />
-    <p>{errors.name}</p>
-</div>
-<div>
-    <label>weight(Max - Min):</label>
-    <input maxlength="2" required  min = "1" autocomplete= "off" placeholder ="Ingrese x" onChange={handleChange} type="text" value={inputs.weight_max} name = "weight_max" />
-    <input maxlength="2" required autocomplete= "off" placeholder ="Ingrese x"  onChange={handleChange} type="text" value={inputs.weight_min} name = "weight_min" />
-    <p>{errors.weight_max}</p>
+    <label className={style.label}>Peso(Max - Min):</label>
+    <input className={style.inputsname} min="1" max="200" required   autocomplete= "off" placeholder ="Ingrese Peso Maximo" onChange={handleChange} type="number" value={inputs.weight_max} name = "weight_max" />
+    <input className={style.inputsname} min="1" max="200" required autocomplete= "off" placeholder ="Ingrese Peso Minimo"  onChange={handleChange} type="number" value={inputs.weight_min} name = "weight_min" />
+    <p className={style.error}>{errors.weight_max}  {errors.weight_min}</p>
     
 </div>
 <div>
-    <label>height(Max-Min):</label>
-    <input maxlength="2" required autocomplete= "off" placeholder ="Ingrese x" onChange={handleChange} type="number" value={inputs.height_max} name = "height_max" />
-    <input maxlength="2" required autocomplete= "off" placeholder ="Ingrese x" onChange={handleChange} type="number" value={inputs.height_min} name = "height_min" />
-        <p>{errors.height_max}</p>
+    <label className={style.label}>Altura(Max-Min):</label>
+    <input className={style.inputsname} min="1" max="150" required autocomplete= "off" placeholder ="Ingrese altura maxima" onChange={handleChange} type="number" value={inputs.height_max} name = "height_max" />
+    <input className={style.inputsname} min="1" max="150" required autocomplete= "off" placeholder ="Ingrese altura minma" onChange={handleChange} type="number" value={inputs.height_min} name = "height_min" />
+        <p className={style.error}>{errors.height_max} {errors.height_min}</p>
 
 </div>
 <div>
-    <label>Life span:</label>
-    <input maxlength="2" required autocomplete= "off" placeholder ="Ingrese x" onChange={handleChange} type="text" value={inputs.life_span} name = "life_span" />
+    <label className={style.label}>Esperanza de vida:</label>
+    <input className={style.inputsname} min="1" max="50" required autocomplete= "off" placeholder ="Ingrese esperanza de vida" onChange={handleChange} type="number" value={inputs.life_span} name = "life_span" />
 </div>
 <div>
-    <label>Bred For:</label>
-    <input maxlength="1000" onChange={handleChange} type="text" value={inputs.bred_for} name = "bred_for" />
+    <label className={style.label}>Criado para:</label>
+    <input className={style.inputsname} placeholder ="Criado para" maxlength="1000" onChange={handleChange} type="text" value={inputs.bred_for} name = "bred_for" />
 </div>
 
 
 <div>
-    <label>Imagen:</label>
-    <input onChange={handleChange} type="text" value={inputs.imagen} name = "imagen" />
+    <label  className={style.label}>Imagen:</label>
+    <input placeholder ="Url imagen" className={style.inputsname} onChange={handleChange} type="text" value={inputs.imagen} name = "imagen" />
+    
 </div>
-<select   onChange={(e)=>handleSelect(e) }>
+<select className={style.select}  onChange={(e)=>handleSelect(e) }>
      {  temperament.map((tem)=>(
         
         <option value={tem.name}>{tem.name}</option>
     ))}
+    <p>Temperamentos:</p>
 </select>
 
 {inputs.temperament.map(e=>
 e !== '' ?
-    <div>
-   <ul><li>{e} 
-    <button required type="button" onClick={()=>handleDelete(e)}>X</button>
+    <div className={style.liCont}>
+   <ul className={style.ul}><li className={style.li}>{e} 
+    <button className={style.btn} required type="button" onClick={()=>handleDelete(e)}></button>
     </li></ul>   
-    </div> : handleSumbit
+    </div> : ''
     )}
-    <p>{errors.temperament}</p>
+    <p className={style.error}>{errors.temperament}</p>
 <br />
 <br />
-<button onClick={handleChange} type="sumbit">Crear Personaje</button>
+<button className={style.enviar} onClick={handleChange} type="sumbit">Crear Personaje</button>
 </form>
+</div>    
+
 
     </div>
+    </div> 
 
 )
 }

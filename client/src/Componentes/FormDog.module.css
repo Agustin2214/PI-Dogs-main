@@ -1,6 +1,104 @@
 .danger{
     border-color: red;
 }
-.padre{
+.fondo{
+   background-image: url(https://images.pexels.com/photos/159692/dog-training-joy-fun-159692.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+   object-fit: cover;
+   width: 100%;
+   height: 100vh;
+   position: absolute;
+   z-index: -1;
    
+
+}
+.padre{
+   display: flex;
+   flex-direction: column;
+   max-width: 800px;
+   
+}
+
+.form1{
+ 
+}
+
+.enviar{
+ 
+    border-radius: 24px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    color: #3c4043;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    letter-spacing: .25px;
+    line-height: normal;
+    padding: 11px 24px;
+    transition: background box-shadow 280ms ease;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    
+}
+.enviar:hover {
+    background: #F6F9FE;
+    color: #174ea6;
+    cursor: pointer;
+   }
+   
+   .enviar:active {
+    box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+    outline: none;
+    border: 2px solid #4285f4;
+   }
+.inputsname{
+    display: flex;
+    border: 7px groove #7ea382; 
+    background-color: #bed2f8;
+width: 45%;
+}
+
+.select{
+    display: flex;
+    position: relative;
+width: 47%;
+background-color: #bed2f8;
+}
+
+.error{
+    color: red;
+    font-size: 15px;
+}
+
+.label{
+    font-size: 20px;
+    font-weight: 15px;
+}
+
+.btn{
+background-color: red;
+border-radius: 2px;
+width: 15px;
+height: 15px;
+
+justify-content: center;
+}
+
+.ul{
+    display: flex;
+    flex-direction: row-reverse;
+    text-decoration: none;
+    list-style: none;
+  
+    
+}
+.liCont{
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+    max-height: 20px;
+    max-width: 48%;
+    ;
 }

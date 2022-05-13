@@ -70,7 +70,7 @@ useEffect(()=>{
 dispatch(getdOG())
 dispatch(getTemperament())
 
-},[])
+},[dispatch])
 
 
 
@@ -108,12 +108,12 @@ dispatch(getTemperament())
 
 </form>
 
-<SubNav/>
+<SubNav setpaginaActual={setpaginaActual}/>
 
 {/* <button type='sumbit' onClick={(e)=> handleReset(e)}>Reset </button> */}
 
 
-<Filtrotemp prueba={prueba} prueba1={prueba1} setpaginaActual={setpaginaActual} setOrden={setOrden}/>
+<Filtrotemp prueba={prueba} prueba1={prueba1} setpaginaActual={setpaginaActual} />
 
 </nav>
 
@@ -122,7 +122,7 @@ dispatch(getTemperament())
 
 
 
-<Paginado  dogPorPagina={dogPorPagina} allDog={allDog.length} paginado = {paginado} />
+<Paginado  dogPorPagina={dogPorPagina} allDog={allDog.length} paginado = {paginado}  />
 
 
 
@@ -137,7 +137,7 @@ dogsActuales?.map((e) => {
         
 <Link  to={"/home/" + e.id}> 
 
-<Card  keys={e.id} name={e.name} image = {e.imagen} 
+<Card  keys={e.id} name={e.name} image = {e.imagen} bred_for={e.bred_for}
 weight= {e.weight} temperament = {e.temperament || e.temperaments} />
 
 

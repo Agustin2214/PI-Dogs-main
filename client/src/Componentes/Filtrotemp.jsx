@@ -1,103 +1,17 @@
 
-import { useState} from 'react'
+import { useEffect, useState} from 'react'
 import{useDispatch,useSelector} from 'react-redux'
 
 import { darvuelta, filtroTemperament } from '../action';
 import style from './Filtrotemp.module.css'
 
-
-
-
-
-
-// export function Filtrotemp() {
-
-// const [inputs, setinputs] = useState({temperamentos: []});
-// const temperament = useSelector((state) => state.temp)
-// const dispatch = useDispatch();
-
-// const inputs2 = inputs.temperamentos.join('-').replaceAll(' ','%').toString()
-// console.log(inputs2) 
-//  function  handleSelect(e){
-//     if(e.target.value !== 'All'){
-//     setinputs({
-//         ...inputs,
-//         temperamentos : [...inputs.temperamentos,inputs.temperamentos.includes(e.target.value) ? '' : e.target.value ]
-//     })}else{
-//         setinputs({
-//         ...inputs,
-//         temperamentos : []
-//     })
-    
-// }
- 
-// }
-// function handleDelete(e){
-    
-//     setinputs({
-//         ...inputs,
-//         temperamentos : inputs.temperamentos.filter(temp => temp !==e)
-//     })
-   
-   
-// }
-
-// function handleSumbit(e){
-//     e.preventDefault()
-//     dispatch(filtroTemperament(inputs2))
-// }
-
-
-//     return (
-//         <div>
-//         <select onChange={(e)=>handleSelect(e)}>
-//         <option>All</option>
-
-
-
-//             {temperament?.map((e) => {
-//     return(
-        
-    
-        
-        
-        
-//         <option className={style.option} value={e.name}>
-//         {e.name}
-//         </option>
-       
- 
-   
-           
-
-   
-// )}
-
-// )
-
-// }
-
-//         </select>
-
-//         {inputs.temperamentos.map(e=>
-// e !== '' ?
-//     <div>
-//    <ul><li className={style.elemento}>{e} 
-//     <button type="button" onClick={()=>handleDelete(e)}>X</button>
-//     </li></ul>   
-//     </div> : ''
-//     )}
-//     <button type ='sumbit' onClick={(e)=>handleSumbit(e)}>sumbit</button>
-//         </div>
-//     )
-// }
  export function Filtrotemp({prueba,prueba1,setpaginaActual,setOrden}) {
 
     const [inputs, setinputs] = useState({temperamentos: []});
     const temperament = useSelector((state) => state.temp)
     const dog = useSelector((state) => state.dog)
     const dispatch = useDispatch();
-    
+    const [pruebas, setpruebas] = useState('abcasc');
    
     let x1 = prueba + prueba1
     console.log(x1)
@@ -106,10 +20,22 @@ import style from './Filtrotemp.module.css'
     e.preventDefault();
     dispatch(filtroTemperament(''))
     setinputs({temperamentos: []})
+    setpruebas((previo)=> {
+        const newState = prueba + prueba1
+        console.log(newState)
+         return newState
+         
+     })
+     handleprueba(e)
+    console.log(pruebas)
+    
   
    }
      
-
+function handleprueba(e){
+    e.preventDefault()
+    dispatch(darvuelta(pruebas))
+}
 
      function  handleSelect(e){
        
@@ -126,6 +52,7 @@ import style from './Filtrotemp.module.css'
         
         
         dispatch(filtroTemperament(x))
+        setpaginaActual(1)
         
         return newState
 
@@ -145,6 +72,7 @@ import style from './Filtrotemp.module.css'
         }
         
         dispatch(filtroTemperament((newState.temperamentos.join('-').replaceAll(' ','%').toString())))
+        setpaginaActual(1)
         return newState
         })
      
