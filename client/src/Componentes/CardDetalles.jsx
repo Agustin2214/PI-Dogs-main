@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { detellesDog } from "../action";
 import { NavBar } from "./NavBar";
 import style from './CardDetalles.module.css'
+import { Loading } from "./Loading";
 
 
 
@@ -17,6 +18,7 @@ export function CardDetalles(props) {
     const dispatch = useDispatch();
     const params = props.match.params.id
 
+ 
     
     useEffect(() => {
         dispatch(detellesDog(params))
@@ -45,10 +47,10 @@ const dogDetalle = useSelector(state => state.detalles);
 <h2>Tamaño:{dogDetalle.height}</h2>
 <h2>Criado para:{dogDetalle.bred_for}</h2>
 <h2>Temperamento:{dogDetalle.temperament || dogDetalle.temperaments }</h2>
-<Link to='/home'><button>Volver</button> </Link>
+<Link to='/home/'><button >Volver</button> </Link>
 </div>
  
-</div> : <p>loading</p>
+</div> :  <Loading/>
 }
 
       

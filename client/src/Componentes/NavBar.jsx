@@ -8,7 +8,7 @@ export function NavBar() {
     return (
         <nav className={style.nav}>
 
-<p className={style.text}>Pagina web Raza de perros</p>
+<p className={style.text}>DOGS API</p>
 
      <ul className={style.lista}>   
 

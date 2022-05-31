@@ -63,24 +63,7 @@ export function ordenporpeso(payload){
   }
 }
 
-export function getName(name) {
-  return async function(dispatch){
-    try{  var json = await axios.get(`http://localhost:3001/dog?name=${name}`)
 
-return dispatch({
-type: GET_NAME,
-payload: json.data
-})
-    } catch(er){
-      console.log(er.response.data)
-      return dispatch({
-        type: GET_NAME,
-        payload: er.response.data
-     
-    })
-  } 
-  }
-}
 
 export function detellesDog(id){
   return async function(dispatch){
@@ -104,9 +87,11 @@ export function detellesDog(id){
 
 
 
-export function filtroTemperament(temperamentos){
+export function filtroTemperament(temperamentos,name){
+  const temperamentos1 = temperamentos?temperamentos:' '
+  const name1 = name?name:' '
   return async function(dispatch){
-    try{  var json = await axios.get(`http://localhost:3001/dog?temperamentoss=${temperamentos}`)
+    try{  var json = await axios.get(`http://localhost:3001/dogs?temperamentoss=${temperamentos1}&name=${name1}`)
 
 return dispatch({
 type: FILTRO_TEMP,

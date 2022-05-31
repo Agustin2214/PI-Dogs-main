@@ -1,9 +1,10 @@
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
- import {getName} from '../action/index'
+ import {getName} from '../../action/index'
+import { Filtrotemp } from '../Filtrotemp';
 
 
-export function SubNav({setpaginaActual}){
+export function SearchBar({setpaginaActual,prueba,prueba1}){
     const dispatch = useDispatch();
     const [nombres, setNombres] = useState("");
     
@@ -34,10 +35,15 @@ export function SubNav({setpaginaActual}){
 
 return(
     <div>
+        <div>
         <form  onSubmit={(e)=>handleSumbit(e)} >
 <input maxLength='20' type="text" placeholder='Busqueda por Raza' onChange ={(e)=>handleInputChange(e)} />
 <button type='sumbit'> Buscar</button>
 </form>
+</div>
+<div>
+
+</div>
     </div>
 )
 

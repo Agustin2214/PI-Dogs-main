@@ -17,6 +17,11 @@ border-radius: 10px;
     
         
 }
+.hover{
+    display: block;
+    
+
+}
 
 
 
@@ -48,3 +53,12 @@ border-radius: 10px;
     
 }
 
+.hover :hover {
+     background-color: rgb(148, 250, 250);
+filter: brightness(110%);
+border: 1px solid #121111;
+border-radius: 1px;
+}
+.divs{
+   
+}

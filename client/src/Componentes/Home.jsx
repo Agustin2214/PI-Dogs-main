@@ -1,13 +1,14 @@
 import {useEffect, useState} from 'react'
 import{useDispatch,useSelector} from 'react-redux'
-import { getdOG, getTemperament, filtroDogPorCreacion, darvuelta} from '../action'
+import { getdOG, getTemperament, filtroDogPorCreacion, darvuelta, detellesDog} from '../action'
 import {Link} from 'react-router-dom'
 import { Card } from './Card';
 import style from './Home.module.css'
 import { NavBar } from './NavBar';
 import { Paginado } from './Paginado';
-import { SubNav } from './SubNav';
-import { Filtrotemp } from './Filtrotemp';
+
+import { BarraFiltro } from './BarraFiltro';
+import { Loading } from './Loading';
 
 
 export function Home() {
@@ -19,7 +20,7 @@ const [prueba, setprueba] = useState('abc');
 const [prueba1, setprueba1] = useState('asc');
 const [, setOrden] = useState('');
 const [paginaActual, setpaginaActual] = useState(1);
-const [dogPorPagina] = useState(8);
+const [dogPorPagina] = useState(9);
 const indexOfLastCharcater = paginaActual * dogPorPagina
 const indexOfFirstDog = indexOfLastCharcater - dogPorPagina
 const dogsActuales = allDog.slice(indexOfFirstDog,indexOfLastCharcater)
@@ -67,6 +68,7 @@ function handlePrueba1(e){
 
 
 useEffect(()=>{
+dispatch(detellesDog(''))
 dispatch(getdOG())
 dispatch(getTemperament())
 
@@ -81,25 +83,25 @@ dispatch(getTemperament())
             
 <NavBar/>
 
-
+{!allDog.length?<Loading/>:''}
 
 <nav  className={style.navBusqueda}> 
-<select onChange={e =>handelFiltroCreacion(e)} >
+<select className={style.selected} onChange={e =>handelFiltroCreacion(e)} >
 <option multiple value="Todos">Todos</option>
 <option multiple value="creado">Creados</option>
 <option multiple value="api">Api</option>
 
 </select>
 
-<form onClick={e => handeldarvuelta(e)}>
+<form className={style.formx} onClick={e => handeldarvuelta(e)}>
 
-<select onChange={e =>handlePrueba(e)}>
+<select className={style.selected} onChange={e =>handlePrueba(e)}>
 
 <option value="abc">ABC</option>
 <option value="pesomas">PESO</option>
 </select>
 
-<select onChange={e =>handlePrueba1(e)}>
+<select className={style.selected} onChange={e =>handlePrueba1(e)}>
 <option value="asc">Ascendente</option>
 <option value="desc">Descendente</option>
 
@@ -108,12 +110,12 @@ dispatch(getTemperament())
 
 </form>
 
-<SubNav setpaginaActual={setpaginaActual}/>
+
 
 {/* <button type='sumbit' onClick={(e)=> handleReset(e)}>Reset </button> */}
 
 
-<Filtrotemp prueba={prueba} prueba1={prueba1} setpaginaActual={setpaginaActual} />
+<BarraFiltro setpaginaActual = {setpaginaActual} prueba = {prueba} prueba1 ={prueba1}/>
 
 </nav>
 
@@ -122,7 +124,7 @@ dispatch(getTemperament())
 
 
 
-<Paginado  dogPorPagina={dogPorPagina} allDog={allDog.length} paginado = {paginado}  />
+<Paginado className={style.paginado} dogPorPagina={dogPorPagina} allDog={allDog.length} paginado = {paginado} paginaActual={paginaActual} setpaginaActual={setpaginaActual} />
 
 
 
@@ -156,4 +158,5 @@ weight= {e.weight} temperament = {e.temperament || e.temperaments} />
 
         </div>
     )
+    
 }

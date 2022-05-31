@@ -7,17 +7,7 @@
     justify-content: center;
 
 }
-.prueba :hover{
-    background-color: rgb(148, 250, 250);
-    filter: brightness(110%);
-    border: 1px solid #121111;
-    border-radius: 1px;
-}
 
-.fondo{
-    
-
-}
 
 
 
@@ -38,7 +28,7 @@
     grid-template-columns: repeat(auto-fill, 30px);
     gap: 40px;
     padding: 20px;
-  
+    
     font-size: 10px;
     color: red;
     background-color: plum;
@@ -76,11 +66,29 @@ display: flex;
     align-items: center;
    height: 40px;
     gap: 20px;
-    background-color: rgb(134, 134, 134);
+    background-color: rgb(181, 194, 186);
     
 }
 
 .divFiltro{
     background-color: blue;
     overflow: scroll;
+}
+.selected{
+    height: 30px;
+      border-radius: 5px;
+      background: #c3facd;
+}
+
+.fondo{
+    background-color: rgb(227, 255, 224);
+}
+
+@media screen and (max-width: 550px) {
+    .selected{
+        height: 30px;
+        width: 70px;
+          border-radius: 5px;
+          background: #c3facd;
+    }
 }

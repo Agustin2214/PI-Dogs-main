@@ -4,7 +4,7 @@ import {  getTemperament, postDog } from "../action";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./FormDog.module.css"
 import {NavBar} from "./NavBar"
-
+import {RiDeleteBin6Line} from 'react-icons/ri'
 
 export function FormDog(){
     const dispatch = useDispatch();
@@ -202,8 +202,9 @@ return(
 {inputs.temperament.map(e=>
 e !== '' ?
     <div className={style.liCont}>
-   <ul className={style.ul}><li className={style.li}>{e} 
-    <button className={style.btn} required type="button" onClick={()=>handleDelete(e)}></button>
+   <ul className={style.ul}><li className={style.li}>
+       {e} 
+    <button className={style.btn} required type="button" onClick={()=>handleDelete(e)}><RiDeleteBin6Line/></button>
     </li></ul>   
     </div> : ''
     )}

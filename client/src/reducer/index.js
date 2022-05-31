@@ -26,48 +26,18 @@ switch(action.type){
 
      case FILTRO_CREACION:
         const allDogs = state.dogdupli
+    
         const filtroCreacion  = action.payload === 'creado' ? allDogs.filter(e => e.creadoEnBase) : allDogs.filter(e => !e.creadoEnBase)
 
          return{
             ...state,
-            dog: action.payload === 'Todos' ? state.dogdupli : filtroCreacion
+            dog: action.payload === 'Todos' ? allDogs : filtroCreacion
 
          }   
 
     
 
 
-        case ORDEN_POR_NOMBRE:
-
-
-         
-
-            let sort = action.payload === 'abc' ? state.dog.sort(function(a,b){
-                if(a.name.toLowerCase() > b.name.toLowerCase()){
-                    return 1;
-                }
-                if(b.name.toLowerCase() > a.name.toLowerCase()){
-                    return -1
-                }
-                return 0
-           
-            }) : action.payload === 'pesomas' ? state.dog.sort(function(a,b){
-                if(parseInt(a.weight) >parseInt(b.weight)){
-                    return 1;
-                }
-                if(parseInt(b.weight) > parseInt(a.weight)){
-                    return -1
-                }
-                return 0
-            }) :   state.dog
-
-
-
-
-            return{
-                ...state,
-                dog: sort
-            }
 
    
             case DAR_VUELTA:
@@ -114,7 +84,8 @@ switch(action.type){
 
             return{
                 ...state,
-                dog: sort1
+                dog: sort1,
+                
             }
 
     
@@ -123,7 +94,8 @@ switch(action.type){
         
             return{
                 ...state,
-                dog: action.payload
+                dog: action.payload,
+                dogdupli: action.payload
 
                }
 
@@ -134,7 +106,8 @@ switch(action.type){
            case GET_NAME:
                return {
                    ...state,
-                   dog: action.payload
+                   dog: action.payload,
+                   dogdupli: action.payload
                }
     
                case POST_DOG:{
@@ -146,7 +119,8 @@ switch(action.type){
                case DETALLES_DOG:
                    return{
                     ...state,
-                    detalles: action.payload
+                    detalles: action.payload,
+                dogdupli: action.payload
 
                    }
 
